@@ -2,20 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/state_management/constants.dart';
-import 'package:movie_app/ui/screens/otp/otp_page.dart';
+import 'package:movie_app/state_management/constants/constants.dart';
+import 'package:movie_app/state_management/controllers/auth_controllers.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   static String routeName = '/login';
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final TextEditingController emailCon = TextEditingController();
-  final TextEditingController passCon = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailCon = TextEditingController();
+  final TextEditingController _passCon = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextFormField(
-                        controller: emailCon,
+                        controller: _emailCon,
                         decoration: InputDecoration(
                           fillColor: CustomColors.inputFieldColor,
                           filled: true,
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: 25,
                       ),
                       TextFormField(
-                        controller: passCon,
+                        controller: _passCon,
                         decoration: InputDecoration(
                           fillColor: CustomColors.inputFieldColor,
                           filled: true,
@@ -179,8 +179,11 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   TextButton(
-                    onPressed: () {
-                      Get.toNamed(OTPPage.routeName);
+                    onPressed: () async {
+                      // Get.toNamed(OTPScreen.routeName);
+                      // TODO: add logic for sign in
+                      AuthController.instance.register(
+                          _emailCon.text.trim(), _passCon.text.trim());
                     },
                     child: const Text(
                       'Sign in',
@@ -229,7 +232,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 12),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // TODO: add login for google sign in
+                      // AuthController.instance.signInWithGoogle();
+                    },
                     child: const Text(
                       'Google',
                       style: TextStyle(

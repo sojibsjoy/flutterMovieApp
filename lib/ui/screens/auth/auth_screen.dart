@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/state_management/constants.dart';
-import 'package:movie_app/ui/screens/login/login_page.dart';
+import 'package:movie_app/state_management/constants/constants.dart';
+import 'package:movie_app/ui/screens/login/login_screen.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthScreen extends StatelessWidget {
   static String routeName = "/auth";
-  const AuthPage({Key? key}) : super(key: key);
+  const AuthScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +101,7 @@ class AuthPage extends StatelessWidget {
                             const Size(150, 50),
                           ),
                         ),
-                        onPressed: () => Get.toNamed(LoginPage.routeName),
+                        onPressed: () => Get.toNamed(LoginScreen.routeName),
                         child: const Text(
                           'Sign in',
                           style: TextStyle(

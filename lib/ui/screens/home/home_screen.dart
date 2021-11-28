@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/state_management/constants.dart';
+import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/state_management/models/menu_model.dart';
 import 'package:movie_app/ui/pages/home_page.dart';
 import 'package:movie_app/ui/pages/search_page.dart';

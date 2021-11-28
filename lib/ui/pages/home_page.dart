@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/state_management/constants.dart';
+import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/ui/designs/topmovie_degin.dart';
 
 class HomePage extends StatelessWidget {

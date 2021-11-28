@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/state_management/constants.dart';
+import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/ui/screens/home/home_screen.dart';
 
-class OTPPage extends StatefulWidget {
+class OTPScreen extends StatefulWidget {
   static String routeName = '/otp';
-  const OTPPage({Key? key}) : super(key: key);
+  const OTPScreen({Key? key}) : super(key: key);
 
   @override
-  State<OTPPage> createState() => _OTPPageState();
+  State<OTPScreen> createState() => _OTPScreenState();
 }
 
-class _OTPPageState extends State<OTPPage> {
+class _OTPScreenState extends State<OTPScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

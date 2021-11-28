@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/state_management/constants.dart';
-import 'package:movie_app/ui/otp/otp_page.dart';
+import 'package:movie_app/ui/screens/otp/otp_page.dart';
 
 class LoginPage extends StatefulWidget {
   static String routeName = '/login';

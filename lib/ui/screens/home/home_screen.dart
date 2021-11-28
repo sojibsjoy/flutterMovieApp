@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/state_management/constants.dart';
 import 'package:movie_app/state_management/models/menu_model.dart';
 import 'package:movie_app/ui/pages/home_page.dart';
+import 'package:movie_app/ui/pages/search_page.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";
@@ -12,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // home page will be the initial page
   var menuType = MenuType.home;
 
   @override
@@ -59,17 +61,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getView(MenuType menuType) {
     switch (menuType) {
       case MenuType.home:
-        return HomePage();
+        return const HomePage();
       case MenuType.search:
-        return Text("Search Page");
+        return const SearchPage();
       case MenuType.download:
-        return Text("Download Page");
+        return const Text("Download Page");
       case MenuType.menu:
-        return Text("menu Page");
+        return const Text("menu Page");
       case MenuType.profile:
-        return Text("Profile Page");
+        return const Text("Profile Page");
       default:
-        return HomePage();
+        return const HomePage();
     }
   }
 }

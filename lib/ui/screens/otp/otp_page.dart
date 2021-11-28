@@ -4,7 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/state_management/constants.dart';
-import 'package:movie_app/ui/home/home_screen.dart';
+import 'package:movie_app/ui/screens/home/home_screen.dart';
 
 class OTPPage extends StatefulWidget {
   static String routeName = '/otp';

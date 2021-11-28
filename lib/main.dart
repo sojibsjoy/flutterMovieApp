@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/ui/auth/auth_page.dart';
-import 'package:movie_app/ui/home/home_screen.dart';
-import 'package:movie_app/ui/login/login_page.dart';
-import 'package:movie_app/ui/otp/otp_page.dart';
+import 'package:movie_app/ui/screens/auth/auth_page.dart';
+import 'package:movie_app/ui/screens/home/home_screen.dart';
+import 'package:movie_app/ui/screens/login/login_page.dart';
+import 'package:movie_app/ui/screens/otp/otp_page.dart';
 
 void main() {
   runApp(const MyApp());

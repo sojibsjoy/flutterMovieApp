@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/state_management/constants.dart';
-import 'package:movie_app/ui/login/login_page.dart';
+import 'package:movie_app/ui/screens/login/login_page.dart';
 
 class AuthPage extends StatelessWidget {
   static String routeName = "/auth";

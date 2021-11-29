@@ -72,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case MenuType.download:
         return const Text("Download Page");
       case MenuType.menu:
+        auth.signOut();
         return const Text("menu Page");
       case MenuType.profile:
         AuthController.instance.fbSignOut();

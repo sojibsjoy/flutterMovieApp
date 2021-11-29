@@ -66,11 +66,11 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: LoginScreen.routeName,
-          page: () => const LoginScreen(),
+          page: () => LoginScreen(),
         ),
         GetPage(
           name: OTPScreen.routeName,
-          page: () => const OTPScreen(),
+          page: () => OTPScreen(),
         ),
         GetPage(
           name: HomeScreen.routeName,

@@ -1,9 +1,84 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
+import 'package:movie_app/main.dart';
+
 import 'package:flutter/material.dart';
 import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/ui/designs/topmovie_degin.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification notification = message.notification!;
+      AndroidNotification androidN = message.notification!.android!;
+      if (notification != null && androidN != null) {
+        flutterLocalNotificationsPlugin.show(
+          notification.hashCode,
+          notification.title,
+          notification.body,
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              channel.id,
+              channel.name,
+              channelDescription: channel.description,
+              color: Colors.blue,
+              playSound: true,
+              icon: '@mipmap/ic_launcher',
+            ),
+          ),
+        );
+      }
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("onMessageOpenApp");
+      RemoteNotification notification = message.notification!;
+      AndroidNotification androidN = message.notification!.android!;
+      if (notification != null && androidN != null) {
+        Get.defaultDialog(
+          title: notification.title!,
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(notification.body!),
+              ],
+            ),
+          ),
+          onCancel: Get.back,
+        );
+      }
+    });
+  }
+
+  void showNotification() {
+    flutterLocalNotificationsPlugin.show(
+      0,
+      "Testing",
+      "Feelign Amazed?",
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          channel.id,
+          channel.name,
+          channelDescription: channel.description,
+          importance: Importance.high,
+          color: Colors.blue,
+          playSound: true,
+          icon: '@mipmap/ic_launcher',
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +99,7 @@ class HomePage extends StatelessWidget {
                 ),
                 InkWell(
                   // TODO: Add action for the notification icon
-                  onTap: () {},
+                  onTap: showNotification,
                   child: Container(
                     height: 55,
                     width: 55,

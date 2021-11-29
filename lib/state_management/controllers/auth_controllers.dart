@@ -39,19 +39,19 @@ class AuthController extends GetxController {
   }
 
   Future<bool> verifyPhoneNumber(String phoneNumber) async {
-    bool returnFlag = true;
+    bool returnFlag = false;
     await auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (phoneAuthCredential) async {
         returnFlag = false;
       },
       verificationFailed: (verificationFailed) async {
-        returnFlag = false;
         Get.snackbar(
           "Error One O",
           'Failed to Varify!',
           snackPosition: SnackPosition.BOTTOM,
         );
+        returnFlag = true;
       },
       codeSent: (verificationId, resendingToken) async {
         this.verificationId = verificationId;

@@ -326,8 +326,9 @@ class _LoginScreenState extends State<LoginScreen> {
     if (isEmail) {
       showLoading = await AuthController.instance.login(inputEmail, inputPass);
       setState(() {});
-    } else if (!isEmail && inputEmail.length == 14) {      
+    } else if (!isEmail && inputEmail.length == 14) {
       showLoading = await AuthController.instance.verifyPhoneNumber(inputEmail);
+      setState(() {});
       if (!showLoading) {
         setState(() {});
         Get.toNamed(
@@ -336,5 +337,6 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       }
     }
+    setState(() {});
   }
 }

@@ -7,9 +7,9 @@ import 'package:movie_app/ui/screens/home/home_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
-  late Rx<User?> firebaseUser;
 
-  // late Rx<GoogleSignInAccount?> googleSignInAccount;
+  late Rx<User?> firebaseUser;
+  late Rx<GoogleSignInAccount?> googleSignInAccount;
 
   @override
   void onReady() {
@@ -19,9 +19,9 @@ class AuthController extends GetxController {
     firebaseUser.bindStream(auth.userChanges());
     ever(firebaseUser, _setInitialScreen);
 
-    // googleSignInAccount = Rx<GoogleSignInAccount?>(googleSign.currentUser);
-    // googleSignInAccount.bindStream(googleSign.onCurrentUserChanged);
-    // ever(googleSignInAccount, _setInitialScreenGoogle);
+    googleSignInAccount = Rx<GoogleSignInAccount?>(googleSign.currentUser);
+    googleSignInAccount.bindStream(googleSign.onCurrentUserChanged);
+    ever(googleSignInAccount, _setInitialScreenGoogle);
   }
 
   _setInitialScreen(User? user) {
@@ -33,41 +33,41 @@ class AuthController extends GetxController {
     }
   }
 
-  // _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) {
-  //   print(googleSignInAccount);
-  //   if (googleSignInAccount == null) {
-  //     Get.offAll(() => AuthScreen.routeName);
-  //   } else {
-  //     Get.offAll(() => HomeScreen.routeName);
-  //   }
-  // }
+  _setInitialScreenGoogle(GoogleSignInAccount? googleSignInAccount) {
+    if (googleSignInAccount != null) {
+      // user is logged in
+      Get.offAll(() => const HomeScreen());
+    } else {
+      Get.offAll(() => const AuthScreen());
+    }
+  }
 
-  // void signInWithGoogle() async {
-  //   try {
-  //     GoogleSignInAccount? googleSignInAccount = await googleSign.signIn();
+  void signInWithGoogle() async {
+    try {
+      GoogleSignInAccount? googleSignInAccount = await googleSign.signIn();
 
-  //     if (googleSignInAccount != null) {
-  //       GoogleSignInAuthentication googleSignInAuthentication =
-  //           await googleSignInAccount.authentication;
+      if (googleSignInAccount != null) {
+        GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
 
-  //       AuthCredential credential = GoogleAuthProvider.credential(
-  //         accessToken: googleSignInAuthentication.accessToken,
-  //         idToken: googleSignInAuthentication.idToken,
-  //       );
+        AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken,
+        );
 
-  //       await auth
-  //           .signInWithCredential(credential)
-  //           .catchError((onErr) => print(onErr));
-  //     }
-  //   } catch (e) {
-  //     Get.snackbar(
-  //       "Error",
-  //       e.toString(),
-  //       snackPosition: SnackPosition.BOTTOM,
-  //     );
-  //     print(e.toString());
-  //   }
-  // }
+        await auth
+            .signInWithCredential(credential)
+            .catchError((onErr) => print(onErr));
+      }
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      print(e.toString());
+    }
+  }
 
   void register(String email, password) async {
     try {

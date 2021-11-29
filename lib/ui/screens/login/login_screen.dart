@@ -68,6 +68,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       TextFormField(
                         controller: _emailCon,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
                         decoration: InputDecoration(
                           fillColor: CustomColors.inputFieldColor,
                           filled: true,
@@ -99,6 +104,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextFormField(
                         controller: _passCon,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
                         decoration: InputDecoration(
                           fillColor: CustomColors.inputFieldColor,
                           filled: true,
@@ -128,6 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
+                        obscureText: true,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -182,8 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () async {
                       // Get.toNamed(OTPScreen.routeName);
                       // TODO: add logic for sign in
-                      AuthController.instance.register(
-                          _emailCon.text.trim(), _passCon.text.trim());
+                      AuthController.instance
+                          .login(_emailCon.text.trim(), _passCon.text.trim());
                     },
                     child: const Text(
                       'Sign in',
@@ -234,7 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextButton(
                     onPressed: () {
                       // TODO: add login for google sign in
-                      // AuthController.instance.signInWithGoogle();
+                      AuthController.instance.signInWithGoogle();
                     },
                     child: const Text(
                       'Google',

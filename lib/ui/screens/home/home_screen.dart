@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/state_management/constants/constants.dart';
+import 'package:movie_app/state_management/controllers/auth_controllers.dart';
 import 'package:movie_app/state_management/models/menu_model.dart';
 import 'package:movie_app/ui/pages/home_page.dart';
 import 'package:movie_app/ui/pages/search_page.dart';
@@ -69,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case MenuType.menu:
         return const Text("menu Page");
       case MenuType.profile:
+        AuthController.instance.signOut();
         return const Text("Profile Page");
       default:
         return const HomePage();

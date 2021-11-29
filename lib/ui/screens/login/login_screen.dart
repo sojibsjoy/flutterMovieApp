@@ -219,7 +219,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 12),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // TODO: Add Facebook login  logic
+                      AuthController.instance.signInWithFb();
+                    },
                     child: const Text(
                       'Facebook',
                       style: TextStyle(

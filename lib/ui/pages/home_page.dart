@@ -2,10 +2,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/main.dart';
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/state_management/constants/constants.dart';
-import 'package:movie_app/state_management/controllers/movie_controller.dart';
+import 'package:movie_app/state_management/controllers/episode_controller.dart';
 import 'package:movie_app/ui/designs/topmovie_degin.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final MovieController movieController = Get.put(MovieController());
+  final EpisodeController episodeController = Get.put(EpisodeController());
   @override
   void initState() {
     super.initState();
@@ -129,10 +128,24 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(left: 20),
             height: 240,
             width: double.infinity,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return const TopMovieDesign();
+            child: Obx(
+              () {
+                if (episodeController.isLoading.value) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return TopMovieDesign(
+                        name: episodeController.episodeList[index].name,
+                        imgLink:
+                            episodeController.episodeList[index].image.medium,
+                      );
+                    },
+                  );
+                }
               },
             ),
           ),

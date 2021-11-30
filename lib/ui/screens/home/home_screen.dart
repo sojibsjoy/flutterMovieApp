@@ -5,7 +5,10 @@ import 'package:movie_app/state_management/constants/auth_constants.dart';
 import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/state_management/controllers/auth_controllers.dart';
 import 'package:movie_app/state_management/models/menu_model.dart';
+import 'package:movie_app/ui/pages/download_page.dart';
 import 'package:movie_app/ui/pages/home_page.dart';
+import 'package:movie_app/ui/pages/menu_page.dart';
+import 'package:movie_app/ui/pages/profile_page.dart';
 import 'package:movie_app/ui/pages/search_page.dart';
 import 'package:movie_app/ui/screens/auth/auth_screen.dart';
 
@@ -70,26 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
       case MenuType.search:
         return const SearchPage();
       case MenuType.download:
-        return const Text("Download Page");
+        return const DownloadPage();
       case MenuType.menu:
-        auth.signOut();
-        return const Text("menu Page");
+        return const MenuPage();
       case MenuType.profile:
-        AuthController.instance.fbSignOut();
-        checkFbLogOut();
-        return const Text("Profile Page");
+        return const ProfilePage();
       default:
         return const HomePage();
-    }
-  }
-
-  checkFbLogOut() async {
-    final AccessToken? accessToken = await fbAuth.accessToken;
-    if (accessToken != null) {
-      // user is logged in
-      Get.offAll(() => const HomeScreen());
-    } else {
-      Get.offAll(() => const AuthScreen());
     }
   }
 }

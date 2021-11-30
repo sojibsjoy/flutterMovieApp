@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class TopMovieDesign extends StatelessWidget {
-  const TopMovieDesign({Key? key}) : super(key: key);
+  final String imgLink;
+  final String name;
+  TopMovieDesign({
+    Key? key,
+    required this.imgLink,
+    required this.name,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +20,10 @@ class TopMovieDesign extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
-              child: Image.asset(
-                'assets/images/list_img.jpg',
+              child: Image.network(
+                imgLink,
                 width: 340,
-
+                height: 230,
                 // must use this fill
                 fit: BoxFit.fill,
               ),
@@ -27,9 +33,9 @@ class TopMovieDesign extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    "Movie Name",
-                    style: TextStyle(
+                  Text(
+                    name,
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),

@@ -1,16 +1,19 @@
-# movie_app
+# Movie App
 
-A new Flutter project.
+Movies at you palm!
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is the test assignment given by Increments Inc. for the position of the Flutter Developer.<br>
+In this project, you can find tons of movies provided by one of the Rapid API services.<br>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Key Features:
+1. Firebase Email Authentication System.
+2. Firebase Google Authentication System.
+3. Firebase Phone Number Authentication System.
+4. Firebase Facebook Authentication System.
+5. OTP Verification System for Firebase Phone No. Auth. System.
+6. Firebase Push Notification System.
+7. Profile Page for sign out and user information.
+8. Dynamic UI Design.
+These are the major features included in this project.

@@ -5,6 +5,7 @@ import 'package:movie_app/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/state_management/constants/constants.dart';
+import 'package:movie_app/state_management/controllers/movie_controller.dart';
 import 'package:movie_app/ui/designs/topmovie_degin.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // final MovieController movieController = Get.put(MovieController());
   @override
   void initState() {
     super.initState();

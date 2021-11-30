@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:movie_app/state_management/controllers/movie_controller.dart';
 // import 'package:movie_app/state_management/services/api_service.dart';
 
 class SearchPage extends StatefulWidget {
@@ -9,6 +11,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  final MovieController movieController = Get.put(MovieController());
   // @override
   // void initState() {
   //   super.initState();
@@ -23,10 +26,27 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        "Search",
-      ),
+    return Column(
+      children: [
+        Expanded(
+          child: Obx(
+            () {
+              if (movieController.isLoading.value) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return const Text("Movie Name");
+                  },
+                );
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 }

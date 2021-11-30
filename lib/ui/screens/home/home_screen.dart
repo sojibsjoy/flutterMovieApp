@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:get/get.dart';
-import 'package:movie_app/state_management/constants/auth_constants.dart';
 import 'package:movie_app/state_management/constants/constants.dart';
-import 'package:movie_app/state_management/controllers/auth_controllers.dart';
 import 'package:movie_app/state_management/models/menu_model.dart';
 import 'package:movie_app/ui/pages/download_page.dart';
 import 'package:movie_app/ui/pages/home_page.dart';
 import 'package:movie_app/ui/pages/menu_page.dart';
 import 'package:movie_app/ui/pages/profile_page.dart';
 import 'package:movie_app/ui/pages/search_page.dart';
-import 'package:movie_app/ui/screens/auth/auth_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";

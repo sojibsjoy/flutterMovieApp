@@ -2,18 +2,16 @@
 //
 //     final episodesModel = episodesModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
-List<EpisodesModel> episodesModelFromJson(String str) =>
-    List<EpisodesModel>.from(
-        json.decode(str).map((x) => EpisodesModel.fromJson(x)));
+List<EpisodeModel> episodesModelFromJson(String str) => List<EpisodeModel>.from(
+    json.decode(str).map((x) => EpisodeModel.fromJson(x)));
 
-String episodesModelToJson(List<EpisodesModel> data) =>
+String episodesModelToJson(List<EpisodeModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class EpisodesModel {
-  EpisodesModel({
+class EpisodeModel {
+  EpisodeModel({
     required this.id,
     required this.url,
     required this.name,
@@ -45,7 +43,7 @@ class EpisodesModel {
   String summary;
   Links links;
 
-  factory EpisodesModel.fromJson(Map<String, dynamic> json) => EpisodesModel(
+  factory EpisodeModel.fromJson(Map<String, dynamic> json) => EpisodeModel(
         id: json["id"],
         url: json["url"],
         name: json["name"],

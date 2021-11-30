@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/state_management/constants/auth_constants.dart';
-import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/state_management/controllers/auth_controllers.dart';
 import 'package:movie_app/ui/screens/auth/auth_screen.dart';
 import 'package:movie_app/ui/screens/home/home_screen.dart';

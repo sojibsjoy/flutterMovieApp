@@ -5,7 +5,6 @@ import 'package:movie_app/state_management/constants/auth_constants.dart';
 import 'package:movie_app/ui/screens/auth/auth_screen.dart';
 import 'package:movie_app/ui/screens/home/home_screen.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:movie_app/ui/screens/otp/otp_screen.dart';
 
 enum Status {
   error,

@@ -3,7 +3,7 @@ import 'package:movie_app/state_management/constants/api_constants.dart';
 import 'package:movie_app/state_management/models/episodes_model.dart';
 
 class EpisodeService {
-  static Future<List<EpisodesModel>> getEpisodes() async {
+  static Future<List<EpisodeModel>> getEpisodes() async {
     final uri = Uri.http(
       APIConstants.apiLink,
       '/shows/1/episodes',

@@ -5,7 +5,7 @@ import 'package:movie_app/state_management/services/episode_service.dart';
 
 class EpisodeController extends GetxController {
   var isLoading = true.obs;
-  var episodeList = <EpisodesModel>[].obs;
+  var episodeList = <EpisodeModel>[].obs;
 
   @override
   void onInit() {

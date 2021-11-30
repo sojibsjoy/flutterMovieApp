@@ -21,24 +21,22 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification notification = message.notification!;
-      AndroidNotification androidN = message.notification!.android!;
-      if (notification != null && androidN != null) {
-        flutterLocalNotificationsPlugin.show(
-          notification.hashCode,
-          notification.title,
-          notification.body,
-          NotificationDetails(
-            android: AndroidNotificationDetails(
-              channel.id,
-              channel.name,
-              channelDescription: channel.description,
-              color: Colors.blue,
-              playSound: true,
-              icon: '@mipmap/ic_launcher',
-            ),
+
+      flutterLocalNotificationsPlugin.show(
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            channel.id,
+            channel.name,
+            channelDescription: channel.description,
+            color: Colors.blue,
+            playSound: true,
+            icon: '@mipmap/ic_launcher',
           ),
-        );
-      }
+        ),
+      );
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
@@ -99,7 +97,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 InkWell(
-                  // TODO: Add action for the notification icon
                   onTap: showNotification,
                   child: Container(
                     height: 55,

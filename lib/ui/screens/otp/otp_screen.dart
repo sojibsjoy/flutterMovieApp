@@ -7,12 +7,11 @@ import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/state_management/controllers/auth_controllers.dart';
-import 'package:movie_app/ui/screens/home/home_screen.dart';
 
 class OTPScreen extends StatefulWidget {
   static String routeName = '/otp';
 
-  OTPScreen({Key? key}) : super(key: key);
+  const OTPScreen({Key? key}) : super(key: key);
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -196,7 +195,6 @@ class _OTPScreenState extends State<OTPScreen> {
                       width: double.infinity,
                       child: TextButton(
                         onPressed: () {
-                          //TODO: Check for The OTP
                           setState(() {
                             showLoading = true;
                           });

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TopMovieDesign extends StatelessWidget {
   final String imgLink;
   final String name;
-  TopMovieDesign({
+  const TopMovieDesign({
     Key? key,
     required this.imgLink,
     required this.name,

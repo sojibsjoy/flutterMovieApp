@@ -10,7 +10,7 @@ import 'package:movie_app/ui/screens/otp/otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = '/login';
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -203,8 +203,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         TextButton(
                           onPressed: () async {
-                            // Get.toNamed(OTPScreen.routeName);
-                            // TODO: add logic for sign in
                             setState(() {
                               showLoading = true;
                             });
@@ -236,7 +234,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(height: 12),
                         TextButton(
                           onPressed: () {
-                            // TODO: Add Facebook login  logic
                             setState(() {
                               showLoading = true;
                             });
@@ -267,7 +264,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(height: 12),
                         TextButton(
                           onPressed: () {
-                            // TODO: add login for google sign in
                             setState(() {
                               showLoading = true;
                             });

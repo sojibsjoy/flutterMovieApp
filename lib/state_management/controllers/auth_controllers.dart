@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:movie_app/state_management/constants/auth_constants.dart';
+import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/ui/screens/auth/auth_screen.dart';
 import 'package:movie_app/ui/screens/home/home_screen.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -45,11 +47,7 @@ class AuthController extends GetxController {
         returnFlag = false;
       },
       verificationFailed: (verificationFailed) async {
-        Get.snackbar(
-          "Error One O",
-          'Failed to Varify!',
-          snackPosition: SnackPosition.BOTTOM,
-        );
+        showSnackBar(message: "Failed to Varify.");
         returnFlag = true;
       },
       codeSent: (verificationId, resendingToken) async {
@@ -78,11 +76,7 @@ class AuthController extends GetxController {
         return returnFlag;
       }
     } on FirebaseAuthException catch (e) {
-      Get.snackbar(
-        "Error Verifing",
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      showSnackBar(message: e.toString());
       returnFlag = false;
     }
     print("Req terminated");
@@ -126,11 +120,8 @@ class AuthController extends GetxController {
       // logged in
       return false;
     } else {
-      Get.snackbar(
-        "Error",
-        result.status.toString() + " " + result.message.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      showSnackBar(
+          message: result.status.toString() + " " + result.message.toString());
       return true;
     }
   }
@@ -149,76 +140,45 @@ class AuthController extends GetxController {
         );
 
         await auth.signInWithCredential(credential).catchError((onErr) {
-          Get.snackbar(
-            "Error",
-            'Failed to log in',
-            snackPosition: SnackPosition.BOTTOM,
-          );
+          showSnackBar(message: 'Failed to log in.');
         });
-        return false;
       }
     } catch (e) {
-      Get.snackbar(
-        "Error",
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      showSnackBar(message: e.toString());
     }
-    return true;
+    return false;
   }
 
-  void register(String email, password) async {
+  Future<bool> register(String email, password) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      Get.snackbar(
-        "Error",
-        e.message!,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      showSnackBar(message: e.toString());
     } catch (e) {
-      Get.snackbar(
-        "Error",
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      showSnackBar(message: e.toString());
     }
+    return false;
   }
 
   Future<bool> login(String email, password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
-      return false;
     } on FirebaseAuthException catch (e) {
       // this is solely for the Firebase Auth Exception
       // for example : password did not match
-
-      Get.snackbar(
-        "Error",
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
-      return true;
+      showSnackBar(message: e.toString());
     } catch (e) {
-      Get.snackbar(
-        "Error",
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
-      return true;
+      showSnackBar(message: e.toString());
     }
+    return false;
   }
 
   void authSignOut() async {
     try {
       auth.signOut();
     } catch (e) {
-      Get.snackbar(
-        "Error",
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      showSnackBar(message: e.toString());
     }
   }
 
@@ -226,11 +186,7 @@ class AuthController extends GetxController {
     try {
       googleSign.signOut();
     } catch (e) {
-      Get.snackbar(
-        "Error",
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      showSnackBar(message: e.toString());
     }
   }
 
@@ -238,11 +194,17 @@ class AuthController extends GetxController {
     try {
       fbAuth.logOut();
     } catch (e) {
-      Get.snackbar(
-        "Error",
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      showSnackBar(message: e.toString());
     }
+  }
+
+  void showSnackBar({required String message}) {
+    Get.snackbar(
+      "Error Occured!",
+      message,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: CustomColors.inputFieldColor,
+      colorText: Colors.white,
+    );
   }
 }

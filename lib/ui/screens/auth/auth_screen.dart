@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/state_management/constants/constants.dart';
 import 'package:movie_app/ui/screens/login/login_screen.dart';
+import 'package:movie_app/ui/screens/register/register_screen.dart';
 
 class AuthScreen extends StatelessWidget {
   static String routeName = "/auth";
@@ -86,7 +87,7 @@ class AuthScreen extends StatelessWidget {
                           backgroundColor:
                               MaterialStateProperty.all<Color>(Colors.white),
                         ),
-                        onPressed: () {},
+                        onPressed: () => Get.toNamed(RegisterScreen.routeName),
                         child: const Text(
                           'Register',
                           style: TextStyle(

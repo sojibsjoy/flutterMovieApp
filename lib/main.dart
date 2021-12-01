@@ -10,6 +10,7 @@ import 'package:movie_app/ui/screens/auth/auth_screen.dart';
 import 'package:movie_app/ui/screens/home/home_screen.dart';
 import 'package:movie_app/ui/screens/login/login_screen.dart';
 import 'package:movie_app/ui/screens/otp/otp_screen.dart';
+import 'package:movie_app/ui/screens/register/register_screen.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel',
@@ -63,6 +64,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: AuthScreen.routeName,
           page: () => const AuthScreen(),
+        ),
+        GetPage(
+          name: RegisterScreen.routeName,
+          page: () => const RegisterScreen(),
         ),
         GetPage(
           name: LoginScreen.routeName,

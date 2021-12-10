@@ -4,8 +4,8 @@ Movies at you palm!
 
 ## About the project
 
-This project is the test assignment given by Increments Inc. for the position of the Flutter Developer.<br>
-In this project, you can find tons of movies provided by one of the Rapid API services.<br>
+This project is all about new movies and tv shows.<br>
+In this project, you can find tons of movies provided by the TVmaze API service.<br>
 
 ### Key Features:
 1. Firebase Email Authentication System.
@@ -18,6 +18,10 @@ In this project, you can find tons of movies provided by one of the Rapid API se
 8. Dynamic UI Design.
 9. Live search.
 These are the major features included in this project.<br>
+
+### Getx for State Management
+<img src="https://raw.githubusercontent.com/jonataslaw/getx-community/master/get.png" height=130 />
+
 ### Output Screens:
 Introduction Screen        |  Registration Screen     |
 :-------------------------:|:-------------------------:|
